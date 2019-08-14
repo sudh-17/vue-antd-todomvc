@@ -35,7 +35,7 @@
         </li>
         <li>
           <a
-            href="#/active"
+            href="javascript:;"
             :class="{selected: filter === 'active'}"
             @click="onFilt('active')"
           >Active</a>

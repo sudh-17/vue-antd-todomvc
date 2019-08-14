@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <Todo/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Todo from './views/Home/Home.vue'
 
 export default {
   name: 'app',
   components: {
-    Todo
   }
 }
 </script>
