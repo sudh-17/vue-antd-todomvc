@@ -31,7 +31,7 @@
       </span>
       <ul class="filters">
         <li>
-          <a href="#/" :class="{selected: filter === 'all'}" @click="onFilt('all')">All</a>
+          <a href="javascript:;" :class="{selected: filter === 'all'}" @click="onFilt('all')">All</a>
         </li>
         <li>
           <a
@@ -42,7 +42,7 @@
         </li>
         <li>
           <a
-            href="#/completed"
+            href="javascript:;"
             :class="{selected: filter === 'completed'}"
             @click="onFilt('completed')"
           >Completed</a>
