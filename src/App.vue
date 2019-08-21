@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="menu">
-      <router-link to="/home">vue 版本</router-link>|
-      <router-link to="/antd">ant-design-vue 版本</router-link>
+      <router-link to="/home">主页</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
     <router-view></router-view>
   </div>
