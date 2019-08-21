@@ -6,27 +6,27 @@ import Home from './views/Home/Home.vue'
 Vue.use(Router)
 
 export default new Router({
-	routes: [
-		{
-			path: '/',
-			name: 'index',
-			component: BasicLayout,
-			redirect: '/home',
-			children: [
-				{
-					path: '/home',
-					name: 'home',
-					component: Home
-				},
-				{
-					path: '/antd',
-					name: 'antd',
-					// route level code-splitting
-					// 路由被访问时才加载
-					component: () =>
-						import(/* webpackChunkName: "antd" */ './views/Antd/Antd.vue')
-				}
-			]
-		}
-	]
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      component: BasicLayout,
+      redirect: '/home',
+      children: [
+        {
+          path: '/home',
+          name: 'home',
+          component: Home
+        },
+        {
+          path: '/antd',
+          name: 'antd',
+          // route level code-splitting
+          // 路由被访问时才加载
+          component: () =>
+            import(/* webpackChunkName: "antd" */ './views/Antd/Antd.vue')
+        }
+      ]
+    }
+  ]
 })

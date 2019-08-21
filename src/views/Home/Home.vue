@@ -58,48 +58,55 @@
 </template>
 
 <script>
-import "./base.css";
-import "./common.css";
-import List from "../../components/List.vue";
-import { mapState } from "vuex";
-import { getAll, addTodo, deleteTodo, updateTodo, completedAll, clearCompleted } from "../../api/todo.js";
+import './base.css'
+import './common.css'
+import List from '../../components/List.vue'
+import { mapState } from 'vuex'
+import {
+  getAll,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+  completedAll,
+  clearCompleted
+} from '../../api/todo.js'
 
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
       list: []
-    };
+    }
   },
   components: {
     List
   },
   created() {
     getAll().then(res => {
-      this.list = res.data;
-    });
+      this.list = res.data
+    })
   },
   methods: {
     addItem(e) {
-      let val = e.target.value;
-      if (!val || val.trim() === "") {
-        return;
+      let val = e.target.value
+      if (!val || val.trim() === '') {
+        return
       }
       addTodo({ title: val }).then(res => {
         if (res.status == 200) {
-          this.list.push(res.data);
-          e.target.value = "";
+          this.list.push(res.data)
+          e.target.value = ''
         }
-      });
+      })
     },
     delItem(id) {
       deleteTodo(id).then(res => {
         if (res.status == 200) {
-          let removeId = res.data;
-          let index = this.list.findIndex(item => item.id === removeId);
-          this.list.splice(index, 1);
+          let removeId = res.data
+          let index = this.list.findIndex(item => item.id === removeId)
+          this.list.splice(index, 1)
         }
-      });
+      })
     },
     onCheck(id, value) {
       updateTodo({
@@ -107,11 +114,11 @@ export default {
         completed: value
       }).then(res => {
         if (res.status === 200) {
-          let index = this.list.findIndex(item => item.id === id);
-          this.list[index].completed = value;
-          this.list = JSON.parse(JSON.stringify(this.list));
+          let index = this.list.findIndex(item => item.id === id)
+          this.list[index].completed = value
+          this.list = JSON.parse(JSON.stringify(this.list))
         }
-      });
+      })
     },
     onUpdate(id, value) {
       updateTodo({
@@ -119,14 +126,14 @@ export default {
         title: value
       }).then(res => {
         if (res.status === 200) {
-          let index = this.list.findIndex(item => item.id === id);
-          this.list[index].title = value;
-          this.list = JSON.parse(JSON.stringify(this.list));
+          let index = this.list.findIndex(item => item.id === id)
+          this.list[index].title = value
+          this.list = JSON.parse(JSON.stringify(this.list))
         }
-      });
+      })
     },
     onCheckAll(e) {
-      let value = e.target.checked;
+      let value = e.target.checked
       completedAll(value).then(res => {
         if (res.status === 200) {
           this.list = res.data
@@ -141,12 +148,12 @@ export default {
       })
     },
     onFilt(value) {
-      if (value === "completed") {
-        this.$store.commit("SET_FILTER_TYPE", "completed");
-      } else if (value === "active") {
-        this.$store.commit("SET_FILTER_TYPE", "active");
+      if (value === 'completed') {
+        this.$store.commit('SET_FILTER_TYPE', 'completed')
+      } else if (value === 'active') {
+        this.$store.commit('SET_FILTER_TYPE', 'active')
       } else {
-        this.$store.commit("SET_FILTER_TYPE", "all");
+        this.$store.commit('SET_FILTER_TYPE', 'all')
       }
     }
   },
@@ -155,35 +162,35 @@ export default {
       filter: state => state.app.filter
     }),
     todos() {
-      if (this.filter === "active") {
+      if (this.filter === 'active') {
         return JSON.parse(
           JSON.stringify(this.list.filter(item => item.completed === false))
-        );
-      } else if (this.filter === "completed") {
+        )
+      } else if (this.filter === 'completed') {
         return JSON.parse(
           JSON.stringify(this.list.filter(item => item.completed === true))
-        );
+        )
       } else {
-        return JSON.parse(JSON.stringify(this.list));
+        return JSON.parse(JSON.stringify(this.list))
       }
     },
     unCompletedCount() {
-      let count = 0;
+      let count = 0
       this.list.forEach(item => {
         if (!item.completed) {
-          count++;
+          count++
         }
-      });
-      return count;
+      })
+      return count
     },
     completedCount() {
-      return this.list.filter(item => item.completed === true).length;
+      return this.list.filter(item => item.completed === true).length
     },
     isAllChecked() {
-      return this.list.findIndex(item => item.completed === false) === -1;
+      return this.list.findIndex(item => item.completed === false) === -1
     }
   }
-};
+}
 </script>
 
 <style lang="less">

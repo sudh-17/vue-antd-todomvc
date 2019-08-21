@@ -3,7 +3,12 @@
     <ul class="todo-list">
       <li v-for="item in list" :key="item.id">
         <div class="view">
-          <input class="toggle" type="checkbox" :checked="item.completed" @click="(e) => onCheck(e, item.id)" />
+          <input
+            class="toggle"
+            type="checkbox"
+            :checked="item.completed"
+            @click="(e) => onCheck(e, item.id)"
+          />
           <label @dblclick="onEditing(item.id, item.title)">{{ item.title}}</label>
           <button class="destroy" @click="onDel(item.id)"></button>
         </div>
@@ -22,54 +27,54 @@
 
 <script>
 export default {
-  name: "list",
+  name: 'list',
   props: {
     list: Array
   },
   data() {
     return {
       visible: false
-    };
+    }
   },
   methods: {
     onDel(id) {
-      this.$emit("onDel", id);
+      this.$emit('onDel', id)
     },
     onCheck(e, id) {
-      let value = e.target.checked;
-      this.$emit("onCheck", id, value);
+      let value = e.target.checked
+      this.$emit('onCheck', id, value)
     },
     onEditing(id, value) {
       Object.keys(this.$refs).forEach(key => {
         if (this.$refs[key] && this.$refs[key].length > 0) {
-          let edit = this.$refs[key][0];
-          edit.style.display = "none";
+          let edit = this.$refs[key][0]
+          edit.style.display = 'none'
         }
-      });
-      let input = this.$refs[id][0];
-      input.style.display = "block";
+      })
+      let input = this.$refs[id][0]
+      input.style.display = 'block'
       input.value = value
-      input.focus();
+      input.focus()
     },
     onUpdate(e, id) {
-      let val = e.target.value;
-      if (!val || val.trim() === "") {
+      let val = e.target.value
+      if (!val || val.trim() === '') {
         if (e.type === 'blur') {
-          e.target.style.display = "none";
+          e.target.style.display = 'none'
         }
-        return;
+        return
       }
-      this.$emit("onUpdate", id, val);
-      e.target.style.display = "none";
+      this.$emit('onUpdate', id, val)
+      e.target.style.display = 'none'
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
 .view {
   text-align: left !important;
-  input[type="checkbox"]:checked + label {
+  input[type='checkbox']:checked + label {
     color: #d9d9d9;
     text-decoration: line-through !important;
   }
