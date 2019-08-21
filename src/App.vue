@@ -1,15 +1,17 @@
 <template>
   <div id="app">
+    <div class="menu">
+      <router-link to="/home">vue 版本</router-link>|
+      <router-link to="/antd">ant-design-vue 版本</router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'app',
-  components: {
-  }
+  components: {}
 }
 </script>
 
@@ -21,5 +23,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.menu {
+  position: absolute;
+  top: 8px;
+  left: 19px;
 }
 </style>
