@@ -153,6 +153,7 @@ body {
 .todo-list li {
 	position: relative;
 	font-size: 24px;
+	min-height: 66px;
 	border-bottom: 1px solid #ededed;
 }
 
@@ -250,9 +251,9 @@ body {
 	display: block;
 }
 
-.todo-list li .edit {
+/* .todo-list li .edit {
 	display: none;
-}
+} */
 
 .todo-list li.editing:last-child {
 	margin-bottom: -1px;
