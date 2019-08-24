@@ -4,6 +4,9 @@
       <router-link to="/home">主页</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <div class="source">
+      <a href="https://github.com/sudh-17/vue-antd-todomvc/tree/master" target="_blank">源码地址</a>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -16,17 +19,17 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 .menu {
   position: absolute;
   top: 8px;
   left: 19px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.source {
+  position: absolute;
+  left: 17px;
+  top: 100px;
+  font-size: 24px;
 }
 </style>

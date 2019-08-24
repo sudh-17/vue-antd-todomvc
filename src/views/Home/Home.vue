@@ -1,7 +1,7 @@
 <template>
   <section class="todoapp">
     <header class="header">
-      <h1>todos</h1>
+      <h1 class="title">todos</h1>
       <input
         @keyup.enter="addItem"
         class="new-todo"
@@ -10,7 +10,7 @@
       />
     </header>
 
-    <section class="main" style="display: block;">
+    <section class="main">
       <template v-if="list.length > 0">
         <input
           id="toggle-all"
@@ -19,7 +19,7 @@
           @click="onCheckAll"
           :checked="isAllChecked"
         />
-        <label for="toggle-all">Mark all as complete</label>
+        <label for="toggle-all"></label>
       </template>
       <List :list="todos" @onDel="delItem" @onCheck="onCheck" @onUpdate="onUpdate" />
     </section>
@@ -48,19 +48,18 @@
           >Completed</a>
         </li>
       </ul>
-      <button
+      <a
+        href="javascript:;"
         v-if="completedCount > 0"
         class="clear-completed"
         @click="clearCompleted"
-      >Clear completed</button>
+      >Clear completed</a>
     </footer>
   </section>
 </template>
 
 <script>
-import './base.css'
-import './common.css'
-import List from '../../components/List.vue'
+import List from '@components/List.vue'
 import { mapState } from 'vuex'
 import {
   getAll,
@@ -69,7 +68,7 @@ import {
   updateTodo,
   completedAll,
   clearCompleted
-} from '../../api/todo.js'
+} from '@api/todo.js'
 
 export default {
   name: 'home',
@@ -194,5 +193,146 @@ export default {
 </script>
 
 <style lang="less">
+@import url('../../css/global.css');
+
+.todoapp {
+  background: #fff;
+  margin: 130px 0 40px 0;
+  width: 550px;
+  left: 50%;
+  margin-left: -275px;
+  position: relative;
+  box-shadow: 21px 52px 16px 0 rgba(0, 0, 0, 0.2),
+    0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  .header {
+    padding-bottom: 4px;
+    box-shadow: 0px -4px 8px 0 #ddd inset;
+    .title {
+      position: absolute;
+      top: -128px;
+      width: 100%;
+      text-align: center;
+      font-size: 100px;
+      margin: 0;
+      font-weight: normal;
+      color: #e6868657;
+      font-family: Century Schoolbook;
+    }
+    .new-todo {
+      width: 100%;
+      padding: 17px 10px 17px 58px;
+      font-size: 22px;
+      box-sizing: border-box;
+      border: none !important;
+      outline: none;
+      &::input-placeholder {
+        font-style: italic;
+        font-weight: 300;
+        color: #e6e6e6;
+      }
+      &::-webkit-input-placeholder {
+        font-style: italic;
+        font-weight: 300;
+        color: #e6e6e6;
+      }
+      &::-moz-placeholder {
+        font-style: italic;
+        font-weight: 300;
+        color: #e6e6e6;
+      }
+    }
+  }
+  .main {
+    position: relative;
+    .toggle-all {
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 1px;
+      &:checked + label {
+        color: #000000;
+      }
+      & + label {
+        height: 42px;
+        width: 54px;
+        position: absolute;
+        top: -55px;
+        left: -1px;
+        transform: rotate(90deg);
+        color: #c1c1c1;
+        &::before {
+          content: '>';
+          font-size: 29px;
+          text-align: center;
+          line-height: 39px;
+          font-family: serif;
+          font-weight: bold;
+          padding-left: 26px;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .footer {
+    height: 20px;
+    padding: 14px 9px;
+    position: relative;
+    color: #777;
+    border-top: 1px solid #ddd;
+    .todo-count {
+      font-size: 13px;
+    }
+    .filters {
+      position: absolute;
+      list-style: none;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      top: 13px;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      li {
+        display: inline;
+        a {
+          color: inherit;
+          font-size: 14px;
+          margin: 0;
+          padding: 3px 7px;
+          text-decoration: none;
+          border: 1px solid transparent;
+          border-radius: 3px;
+        }
+        .selected {
+          border-color: #2cc5ba;
+        }
+      }
+    }
+    .clear-completed {
+      color: inherit;
+      position: absolute;
+      right: 12px;
+      top: 14px;
+      font-size: 14px;
+      text-decoration: none;
+      &:hover {
+        color: #ff3c00;
+        text-decoration: underline;
+      }
+    }
+    &::before {
+      content: ' ';
+      height: 34px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+        0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+        0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
 </style>
 
