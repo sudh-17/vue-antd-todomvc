@@ -10,7 +10,7 @@
             @click="(e) => onCheck(e, item.id)"
           />
           <label @dblclick="onEditing(item.id)">{{ item.title}}</label>
-          <a href="javascript:;s" class="destroy" @click="onDel(item.id)"></a>
+          <a href="javascript:;" class="destroy" @click="onDel(item.id)"></a>
         </div>
         <input
           type="text"
