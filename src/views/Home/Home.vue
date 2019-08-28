@@ -68,7 +68,7 @@ import {
   updateTodo,
   completedAll,
   clearCompleted
-} from '@api/todo.js'
+} from '@api'
 
 export default {
   name: 'home',
