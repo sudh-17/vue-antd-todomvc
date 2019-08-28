@@ -5,7 +5,7 @@ import {
   updateTodo,
   completedAll,
   clearCompleted
-} from './todo.js'
+} from  './localStorage.js'  //'./todo.js'
 
 export {
   getAll,
