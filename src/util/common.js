@@ -3,7 +3,15 @@ function S4() {
 }
 
 function createUUID() {
-  return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4())
+  let arr = []
+  for (let i = 0; i < 8; i++) {
+    arr.push(S4())
+  }
+  arr.splice(2, 0, '-')
+  arr.splice(4, 0, '-')
+  arr.splice(6, 0, '-')
+  arr.splice(8, 0, '-')
+  return arr.join('')
 }
 
-export {createUUID}
+export { createUUID }

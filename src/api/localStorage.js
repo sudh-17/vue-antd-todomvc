@@ -1,4 +1,4 @@
-import {createUUID} from "../util/common"
+import { createUUID } from '../util/common'
 
 let local = localStorage.getItem('todos')
 if (local === null) {
@@ -57,7 +57,7 @@ export function deleteTodo(id) {
 export function updateTodo(todo) {
   let data = get()
   let oldTodo = data.find(item => item.id === todo.id)
-  let newTodo = {...oldTodo, ...todo}
+  let newTodo = { ...oldTodo, ...todo }
   let index = data.findIndex(item => item.id === todo.id)
   data.splice(index, 1, newTodo)
   set(data)
