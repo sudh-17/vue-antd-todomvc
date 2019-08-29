@@ -1,3 +1,5 @@
+import {createUUID} from "../util/common"
+
 let local = localStorage.getItem('todos')
 if (local === null) {
   localStorage.setItem('todos', JSON.stringify([]))
@@ -9,15 +11,6 @@ function get() {
 
 function set(data) {
   localStorage.setItem('todos', JSON.stringify(data))
-}
-
-//用于生成uuid
-function S4() {
-  return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
-}
-
-function createUUID() {
-  return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4())
 }
 
 export function getAll() {
