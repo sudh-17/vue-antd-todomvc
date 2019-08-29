@@ -209,7 +209,7 @@ export default {
     box-shadow: 0px -4px 8px 0 #ddd inset;
     .title {
       position: absolute;
-      top: -128px;
+      top: -113px;
       width: 100%;
       text-align: center;
       font-size: 100px;
