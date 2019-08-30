@@ -2,12 +2,15 @@
   <section class="todoapp fade-up">
     <header class="header">
       <h1 class="title">todos</h1>
-      <input
-        @keyup.enter="addItem"
-        class="new-todo"
-        placeholder="What needs to be completed?"
-        autofocus
-      />
+      <form>
+        <input
+          @keyup.enter="addItem"
+          class="new-todo"
+          placeholder="What needs to be completed?"
+          autofocus
+          required
+        />
+      </form>
     </header>
 
     <section class="main">
@@ -256,6 +259,7 @@ export default {
     .toggle-all {
       width: 0;
       height: 0;
+      opacity: 0;
       position: absolute;
       left: 1px;
       &:checked + label {
@@ -274,7 +278,7 @@ export default {
           font-size: 29px;
           text-align: center;
           line-height: 39px;
-          font-family: serif;
+          font-family: 幼圆;
           font-weight: bold;
           padding-left: 26px;
         }
