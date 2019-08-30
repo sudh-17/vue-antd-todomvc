@@ -1,27 +1,29 @@
 <template>
   <div>
     <ul class="todo-list" ref="container">
-      <li v-for="item in list" :key="item.id">
-        <div class="view" v-if="!(editingId === item.id)">
+      <transition-group name="list" tag="span">
+        <li v-for="item in list" :key="item.id">
+          <div class="view" v-if="!(editingId === item.id)">
+            <input
+              class="toggle"
+              type="checkbox"
+              :checked="item.completed"
+              @click="(e) => onCheck(e, item.id)"
+            />
+            <label @dblclick="onEditing(item.id)">{{ item.title}}</label>
+            <a href="javascript:;" class="destroy" @click="onDel(item.id)"></a>
+          </div>
           <input
-            class="toggle"
-            type="checkbox"
-            :checked="item.completed"
-            @click="(e) => onCheck(e, item.id)"
+            type="text"
+            :ref="item.id"
+            v-if="editingId === item.id"
+            class="edit"
+            :value="item.title"
+            @blur="(e) => onUpdate(e, item.id)"
+            @keyup.enter="(e) => onUpdate(e, item.id)"
           />
-          <label @dblclick="onEditing(item.id)">{{ item.title}}</label>
-          <a href="javascript:;" class="destroy" @click="onDel(item.id)"></a>
-        </div>
-        <input
-          type="text"
-          :ref="item.id"
-          v-if="editingId === item.id"
-          class="edit"
-          :value="item.title"
-          @blur="(e) => onUpdate(e, item.id)"
-          @keyup.enter="(e) => onUpdate(e, item.id)"
-        />
-      </li>
+        </li>
+      </transition-group>
     </ul>
   </div>
 </template>
@@ -65,6 +67,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.6s;
+}
+.list-enter, .list-leave-to
+/* .list-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  background: rgba(0, 183, 255, 0.685) !important;
+  transform: translateX(-300px);
+}
+
 .view {
   text-align: left !important;
   input[type='checkbox']:checked + label {
@@ -84,6 +97,7 @@ export default {
   list-style: none;
   li {
     border-bottom: 1px solid #ddd;
+    background: #ffffff;
     position: relative;
     min-height: 58px;
     &:last-child {
