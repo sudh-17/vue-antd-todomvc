@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>About</h1>
-    <img src="../../assets/logo.png" alt="" srcset="">
   </div>
 </template>
 
@@ -11,7 +10,7 @@
     width: 200px;
     position: absolute;
     left: 50%;
-    top: 30px;
+    top: 50px;
     margin-left: -100px;
   }
 </style>

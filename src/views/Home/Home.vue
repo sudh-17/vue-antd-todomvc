@@ -1,5 +1,5 @@
 <template>
-  <section class="todoapp">
+  <section class="todoapp fade-up">
     <header class="header">
       <h1 class="title">todos</h1>
       <input
@@ -194,6 +194,15 @@ export default {
 
 <style lang="less">
 @import url('../../css/global.css');
+
+@keyframes kf
+{
+  from {transform: translateY(80px); opacity: 0;}
+  to {transform: translateY(0px); opacity: 1;}
+}
+.fade-up {
+  animation: kf 1.5s;
+}
 
 .todoapp {
   background: #fff;
