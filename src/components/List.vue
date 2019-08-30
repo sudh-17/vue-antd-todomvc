@@ -75,7 +75,7 @@ export default {
 /* .list-leave-active for below version 2.1.8 */ {
   opacity: 0;
   background: rgba(0, 183, 255, 0.685) !important;
-  transform: translateX(-300px);
+  transform: translateX(-550px);
 }
 
 .view {
