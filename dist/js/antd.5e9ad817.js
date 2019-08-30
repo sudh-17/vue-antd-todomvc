@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["antd"],{"421d":function(t,n,e){"use strict";var a=e("8426"),c=e.n(a);c.a},8426:function(t,n,e){},"8ab4":function(t,n,e){"use strict";e.r(n);var a=function(){var t=this,n=t.$createElement;t._self._c;return t._m(0)},c=[function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",{staticClass:"container"},[e("h1",[t._v("About")])])}],r=(e("421d"),e("2877")),s={},i=Object(r["a"])(s,a,c,!1,null,"0bc52ad6",null);n["default"]=i.exports}}]);
+//# sourceMappingURL=antd.5e9ad817.js.map
