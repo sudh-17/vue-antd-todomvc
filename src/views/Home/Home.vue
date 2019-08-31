@@ -2,7 +2,6 @@
   <section class="todoapp fade-up">
     <header class="header">
       <h1 class="title">todos</h1>
-      <form>
         <input
           @keyup.enter="addItem"
           class="new-todo"
@@ -10,7 +9,6 @@
           autofocus
           required
         />
-      </form>
     </header>
 
     <section class="main">

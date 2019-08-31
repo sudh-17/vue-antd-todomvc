@@ -67,9 +67,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.list-enter-active,
-.list-leave-active {
+.list-enter-active {
   transition: all 0.6s;
+}
+.list-leave-active {
+  transition: all 0.3s;
 }
 .list-enter, .list-leave-to
 /* .list-leave-active for below version 2.1.8 */ {
